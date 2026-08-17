@@ -206,43 +206,55 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="gallery-section">
+      <section className="categories-section">
         <div className="section-header">
-          <span className="section-tag">Our Gallery</span>
-          <h2 className="section-title">A Feast for the Eyes</h2>
-          <p className="section-subtitle">Visual glimpses of our culinary artistry</p>
+          <span className="section-tag">Browse Menu</span>
+          <h2 className="section-title">Explore Our Categories</h2>
+          <p className="section-subtitle">Find exactly what you're craving</p>
         </div>
-        <div className="gallery-grid">
-          <div className="gallery-item gallery-item-large">
-            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80" alt="Pizza Making" />
-            <div className="gallery-overlay">
-              <span>Signature Pizzas</span>
+        <div className="categories-grid">
+          <Link to="/menu" className="category-card">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80" alt="Signature" />
+            <div className="category-card-overlay">
+              <h3>Signature Collection</h3>
+              <span>5 items →</span>
             </div>
-          </div>
-          <div className="gallery-item">
-            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80" alt="Fresh Ingredients" />
-            <div className="gallery-overlay">
-              <span>Fresh Ingredients</span>
+          </Link>
+          <Link to="/menu" className="category-card">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80" alt="Classic" />
+            <div className="category-card-overlay">
+              <h3>Classic Favorites</h3>
+              <span>4 items →</span>
             </div>
-          </div>
-          <div className="gallery-item">
-            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80" alt="Artisan Pizza" />
-            <div className="gallery-overlay">
-              <span>Artisan Craft</span>
+          </Link>
+          <Link to="/menu" className="category-card">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80" alt="Gourmet" />
+            <div className="category-card-overlay">
+              <h3>Gourmet Selection</h3>
+              <span>4 items →</span>
             </div>
-          </div>
-          <div className="gallery-item">
-            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80" alt="Pizza Slices" />
-            <div className="gallery-overlay">
-              <span>Perfect Slices</span>
+          </Link>
+          <Link to="/menu" className="category-card">
+            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80" alt="Sides" />
+            <div className="category-card-overlay">
+              <h3>Artisan Sides</h3>
+              <span>6 items →</span>
             </div>
-          </div>
-          <div className="gallery-item gallery-item-tall">
-            <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=400&q=80" alt="Gourmet Pizza" />
-            <div className="gallery-overlay">
-              <span>Gourmet Selection</span>
+          </Link>
+          <Link to="/menu" className="category-card">
+            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&q=80" alt="Drinks" />
+            <div className="category-card-overlay">
+              <h3>Beverages</h3>
+              <span>5 items →</span>
             </div>
-          </div>
+          </Link>
+          <Link to="/menu" className="category-card">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=80" alt="Desserts" />
+            <div className="category-card-overlay">
+              <h3>Sweet Endings</h3>
+              <span>4 items →</span>
+            </div>
+          </Link>
         </div>
       </section>
 

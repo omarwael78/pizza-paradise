@@ -775,73 +775,69 @@ body {
 }
 
 /* ============================================
-   GALLERY SECTION
+   CATEGORIES SECTION
    ============================================ */
-.gallery-section {
+.categories-section {
   padding: 7rem 3rem;
   background: var(--color-dark-lighter);
   border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.gallery-grid {
+.categories-grid {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  gap: 1.2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-.gallery-item {
+.category-card {
   position: relative;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  aspect-ratio: 4/3;
+  text-decoration: none;
   cursor: pointer;
-  aspect-ratio: 1;
 }
 
-.gallery-item-large {
-  grid-column: span 2;
-  grid-row: span 2;
-  aspect-ratio: auto;
-}
-
-.gallery-item-tall {
-  grid-row: span 2;
-  aspect-ratio: auto;
-}
-
-.gallery-item img {
+.category-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-item:hover img {
-  transform: scale(1.1);
+.category-card:hover img {
+  transform: scale(1.08);
 }
 
-.gallery-overlay {
+.category-card-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-  transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  transition: var(--transition);
 }
 
-.gallery-item:hover .gallery-overlay {
-  transform: translateY(0);
+.category-card:hover .category-card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.2) 100%);
 }
 
-.gallery-overlay span {
-  color: var(--color-primary);
+.category-card-overlay h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  color: var(--color-text);
+  font-size: 1.3rem;
   font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.category-card-overlay span {
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* ============================================
