@@ -4,15 +4,16 @@
 
 set -e
 
-echo "Building Django project for Vercel..."
+echo "=== Building Pizza Paradise for Vercel ==="
 
-# Install dependencies
+# --- Django Backend ---
+echo "[1/4] Installing Python dependencies..."
 pip install -r requirements.txt
 
-# Run database migrations
+echo "[2/4] Running database migrations..."
 python manage.py migrate --noinput
 
-# Seed menu data (only if categories table is empty)
+echo "[3/4] Seeding menu data (if empty)..."
 python manage.py shell -c "
 from api.models import Category
 if Category.objects.count() == 0:
@@ -22,10 +23,14 @@ else:
     print('Database already has data, skipping seed.')
 "
 
-# Create static directory if it doesn't exist
 mkdir -p static
-
-# Collect static files
 python manage.py collectstatic --noinput
 
-echo "Build completed successfully!"
+# --- React Frontend ---
+echo "[4/4] Building React frontend..."
+cd frontend
+npm install
+npm run build
+cd ..
+
+echo "=== Build completed successfully! ==="
