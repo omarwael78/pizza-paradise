@@ -11,14 +11,7 @@ echo "[1/3] Running database migrations..."
 python manage.py migrate --noinput
 
 echo "[2/3] Seeding menu data (if empty)..."
-python manage.py shell -c "
-from api.models import Category
-if Category.objects.count() == 0:
-    exec(open('seed_data.py').read())
-    print('Database seeded with menu data.')
-else:
-    print('Database already has data, skipping seed.')
-"
+python seed_data.py
 
 mkdir -p static
 python manage.py collectstatic --noinput

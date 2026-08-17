@@ -2,7 +2,6 @@
   "buildCommand": "bash build.sh",
   "outputDirectory": "frontend/build",
   "installCommand": "pip install -r requirements.txt && cd frontend && npm install",
-  "framework": "create-react-app",
   "routes": [
     {
       "src": "/api/(.*)",
