@@ -7,8 +7,8 @@ echo "Building Django project for Vercel..."
 # Install dependencies
 pip install -r requirements.txt
 
-# Run migrations
-python manage.py migrate --noinput
+# Create static directory if it doesn't exist
+mkdir -p static
 
 # Collect static files
 python manage.py collectstatic --noinput
