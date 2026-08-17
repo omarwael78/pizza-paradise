@@ -7,13 +7,10 @@ set -e
 echo "=== Building Pizza Paradise for Vercel ==="
 
 # --- Django Backend ---
-echo "[1/4] Installing Python dependencies..."
-pip install -r requirements.txt
-
-echo "[2/4] Running database migrations..."
+echo "[1/3] Running database migrations..."
 python manage.py migrate --noinput
 
-echo "[3/4] Seeding menu data (if empty)..."
+echo "[2/3] Seeding menu data (if empty)..."
 python manage.py shell -c "
 from api.models import Category
 if Category.objects.count() == 0:
@@ -27,9 +24,8 @@ mkdir -p static
 python manage.py collectstatic --noinput
 
 # --- React Frontend ---
-echo "[4/4] Building React frontend..."
+echo "[3/3] Building React frontend..."
 cd frontend
-npm install
 npm run build
 cd ..
 

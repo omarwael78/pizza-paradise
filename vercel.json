@@ -1,20 +1,8 @@
 {
-  "builds": [
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-install",
-      "config": {
-        "installCommand": "npm install"
-      }
-    },
-    {
-      "src": "backend/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxDuration": 30
-      }
-    }
-  ],
+  "buildCommand": "bash build.sh",
+  "outputDirectory": "frontend/build",
+  "installCommand": "pip install -r requirements.txt && cd frontend && npm install",
+  "framework": "create-react-app",
   "routes": [
     {
       "src": "/api/(.*)",
@@ -29,7 +17,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/build/index.html"
+      "dest": "/index.html"
     }
   ]
 }
