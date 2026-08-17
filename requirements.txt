@@ -1,0 +1,6 @@
+# Copyright (c) 2026 Eng. Omar Wael. All Rights Reserved.
+
+Django>=6.0,<7.0
+djangorestframework>=3.15,<4.0
+django-cors-headers>=4.0,<5.0
+gunicorn>=22.0,<23.0
