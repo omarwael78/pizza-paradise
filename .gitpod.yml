@@ -1,0 +1,31 @@
+# Copyright (c) 2026 Eng. Omar Wael. All Rights Reserved.
+
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Django Backend
+    init: |
+      pip install django djangorestframework django-cors-headers
+      python manage.py migrate
+      python seed_data.py
+    command: |
+      python manage.py runserver 0.0.0.0:8000
+    openMode: split-right
+
+  - name: React Frontend
+    init: |
+      cd frontend && npm install
+    command: |
+      cd frontend && BROWSER=none npm start
+    openMode: split-right
+
+ports:
+  - port: 8000
+    name: Django Backend
+    onOpen: open-preview
+    visibility: public
+  - port: 3000
+    name: React Frontend
+    onOpen: open-preview
+    visibility: public

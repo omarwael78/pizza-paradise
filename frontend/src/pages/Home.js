@@ -5,9 +5,45 @@ import { Link } from 'react-router-dom';
 import { getMenuItems } from '../api';
 import MenuCard from '../components/MenuCard';
 
+const testimonials = [
+  {
+    name: 'Sarah M.',
+    role: 'Food Blogger',
+    avatar: '👩‍🍳',
+    text: 'The Truffle Margherita is hands down the best pizza I\'ve ever had. The flavors are extraordinary!',
+    rating: 5,
+    color: '#e74c3c',
+  },
+  {
+    name: 'Ahmed K.',
+    role: 'Local Chef',
+    avatar: '👨‍🍳',
+    text: 'As a chef myself, I appreciate the quality of ingredients. This is authentic Italian craftsmanship.',
+    rating: 5,
+    color: '#3498db',
+  },
+  {
+    name: 'Maria L.',
+    role: 'Regular Customer',
+    avatar: '👩',
+    text: 'We order from Pizza Paradise every weekend. The family loves the Prosciutto & Fig pizza!',
+    rating: 5,
+    color: '#e67e22',
+  },
+  {
+    name: 'Omar H.',
+    role: 'Food Critic',
+    avatar: '🧑‍💼',
+    text: 'A true gem in Kafr Elzayat. The attention to detail in every dish is remarkable.',
+    rating: 5,
+    color: '#27ae60',
+  },
+];
+
 const Home = () => {
   const [featuredItems, setFeaturedItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
     const fetchFeatured = async () => {
@@ -21,6 +57,13 @@ const Home = () => {
       }
     };
     fetchFeatured();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -81,6 +124,50 @@ const Home = () => {
             <span className="stat-icon">🚚</span>
             <span className="stat-number">30</span>
             <span className="stat-label">Min Delivery</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-section">
+        <div className="about-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Our Restaurant" className="about-image" />
+          <div className="about-image-accent"></div>
+        </div>
+        <div className="about-content">
+          <span className="section-tag">Our Story</span>
+          <h2 className="section-title about-title">A Legacy of Flavor</h2>
+          <p className="about-text">
+            Since 2026, Pizza Paradise has been the heart of Algalaa, Kafr Elzayat.
+            We blend traditional Italian techniques with the finest local ingredients
+            to create unforgettable dining experiences.
+          </p>
+          <p className="about-text">
+            Every pizza tells a story — from our hand-stretched dough to our
+            slow-rising sauces, each element is crafted with love and precision
+            by our master pizzaiolos.
+          </p>
+          <div className="about-highlights">
+            <div className="about-highlight">
+              <span className="highlight-icon">🥇</span>
+              <div>
+                <strong>Premium Quality</strong>
+                <span>Only the finest ingredients</span>
+              </div>
+            </div>
+            <div className="about-highlight">
+              <span className="highlight-icon">⏱️</span>
+              <div>
+                <strong>Fast Delivery</strong>
+                <span>30 minutes or less</span>
+              </div>
+            </div>
+            <div className="about-highlight">
+              <span className="highlight-icon">💰</span>
+              <div>
+                <strong>Best Prices</strong>
+                <span>Quality at fair prices</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -167,7 +254,10 @@ const Home = () => {
         </div>
 
         {loading ? (
-          <div className="loading">Preparing your experience...</div>
+          <div className="loading">
+            <div className="loading-spinner"></div>
+            Preparing your experience...
+          </div>
         ) : (
           <div className="menu-grid">
             {featuredItems.map((item) => (
@@ -180,6 +270,44 @@ const Home = () => {
           <Link to="/menu" className="btn btn-primary btn-large">
             View Full Menu
           </Link>
+        </div>
+      </section>
+
+      <section className="testimonials-section">
+        <div className="section-header">
+          <span className="section-tag">Testimonials</span>
+          <h2 className="section-title">What Our Customers Say</h2>
+          <p className="section-subtitle">Real stories from our beloved community</p>
+        </div>
+        <div className="testimonials-grid">
+          {testimonials.map((t, i) => (
+            <div
+              key={i}
+              className={`testimonial-card ${i === currentTestimonial ? 'active' : ''}`}
+              style={{'--card-accent': t.color}}
+            >
+              <div className="testimonial-stars">
+                {'★'.repeat(t.rating)}
+              </div>
+              <p className="testimonial-text">"{t.text}"</p>
+              <div className="testimonial-author">
+                <span className="testimonial-avatar">{t.avatar}</span>
+                <div>
+                  <strong>{t.name}</strong>
+                  <span>{t.role}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="testimonial-dots">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              className={`dot ${i === currentTestimonial ? 'active' : ''}`}
+              onClick={() => setCurrentTestimonial(i)}
+            />
+          ))}
         </div>
       </section>
 
@@ -215,6 +343,18 @@ const Home = () => {
             </div>
             <h3>Fast Delivery</h3>
             <p>Hot and fresh pizza delivered to your doorstep in 30 minutes</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="newsletter-section">
+        <div className="newsletter-content">
+          <span className="section-tag">Stay Connected</span>
+          <h2 className="newsletter-title">Get Exclusive Offers</h2>
+          <p className="newsletter-text">Subscribe to our newsletter for special deals, new menu items, and seasonal promotions.</p>
+          <div className="newsletter-form">
+            <input type="email" placeholder="Enter your email address" className="newsletter-input" />
+            <button className="btn btn-primary">Subscribe</button>
           </div>
         </div>
       </section>

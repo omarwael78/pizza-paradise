@@ -922,6 +922,290 @@ body {
 }
 
 /* ============================================
+   ABOUT SECTION
+   ============================================ */
+.about-section {
+  padding: 7rem 3rem;
+  background: var(--color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.about-image-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.about-image {
+  width: 450px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.about-image-accent {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 200px;
+  height: 200px;
+  border: 3px solid rgba(200, 169, 126, 0.2);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+
+.about-content {
+  max-width: 500px;
+}
+
+.about-title {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.about-text {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+}
+
+.about-highlights {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.about-highlight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.highlight-icon {
+  font-size: 1.8rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 169, 126, 0.08);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(200, 169, 126, 0.1);
+  flex-shrink: 0;
+}
+
+.about-highlight strong {
+  display: block;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.about-highlight span {
+  color: var(--color-text-dim);
+  font-size: 0.82rem;
+}
+
+/* ============================================
+   TESTIMONIALS SECTION
+   ============================================ */
+.testimonials-section {
+  padding: 7rem 3rem;
+  background: linear-gradient(180deg, var(--color-dark-lighter) 0%, var(--color-dark) 100%);
+  overflow: hidden;
+}
+
+.testimonials-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--color-primary));
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.testimonial-card.active {
+  border-color: rgba(200, 169, 126, 0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  transform: translateY(-5px);
+}
+
+.testimonial-card.active::before {
+  opacity: 1;
+}
+
+.testimonial-stars {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.testimonial-text {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.testimonial-avatar {
+  font-size: 2rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 169, 126, 0.08);
+  border-radius: 50%;
+}
+
+.testimonial-author strong {
+  display: block;
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.testimonial-author span {
+  color: var(--color-text-dim);
+  font-size: 0.78rem;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-dark-border);
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.dot.active {
+  background: var(--color-primary);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   NEWSLETTER SECTION
+   ============================================ */
+.newsletter-section {
+  padding: 5rem 3rem;
+  background: linear-gradient(135deg, rgba(200, 169, 126, 0.06) 0%, rgba(200, 169, 126, 0.02) 100%);
+  border-top: 1px solid rgba(200, 169, 126, 0.08);
+  border-bottom: 1px solid rgba(200, 169, 126, 0.08);
+  text-align: center;
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-text);
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.newsletter-text {
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.8rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  background: rgba(10, 10, 10, 0.6);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: rgba(200, 169, 126, 0.3);
+  box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.06);
+}
+
+.newsletter-input::placeholder {
+  color: var(--color-text-dim);
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(200, 169, 126, 0.15);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
    MENU PAGE
    ============================================ */
 .menu-page {
