@@ -1,22 +1,8 @@
 {
-  "buildCommand": "bash build.sh",
+  "installCommand": "cd frontend && npm install",
+  "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/build",
-  "installCommand": "pip install -r requirements.txt && cd frontend && npm install",
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/wsgi.py"
-    },
-    {
-      "src": "/admin/(.*)",
-      "dest": "backend/wsgi.py"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+  "rewrites": [
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
